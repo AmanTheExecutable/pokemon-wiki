@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import apiFetch from "./components/apiFetch";
+import Cards from "./components/Cards";
+import { useState } from "react";
+import "./components/css/App.css";
+import Header from "./components/Header";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+	const [pokemonData, setPokemonData] = useState({});
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const response = await apiFetch();
+			setPokemonData(response);
+		};
+
+		fetchData();
+	}, []);
+
+	return (
+		<>
+			<Header pD={pokemonData} setPD={setPokemonData} />
+
+			<div className="main-container">
+				{pokemonData?.results?.map(pokemon => {
+					return (
+						<Cards key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+					);
+				})}
+			</div>
+		</>
+	);
+};
 
 export default App;

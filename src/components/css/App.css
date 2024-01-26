@@ -1,0 +1,17 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.main-container {
+	height: fit-content;
+	background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+	padding: 20px;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+}
