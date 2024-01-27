@@ -5,7 +5,7 @@
 }
 
 .container {
-	width: 300px;
+	width: 320px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -13,18 +13,63 @@
 	flex-direction: column;
 	padding: 15px;
 	border: 2px solid #000;
-	border-radius: 10px;
+	border-radius: 15px;
 	background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
 	transition: all 0.5s ease;
+	position: relative;
+}
+
+.container::before,
+.container::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: inherit;
+	border-radius: 10px;
+	pointer-events: none;
+}
+
+.container::before {
+	border: 2px solid rgba(0, 0, 0, 0.725);
+	animation: borderGlow 2s infinite alternate;
+}
+
+.container::after {
+	border: 2px solid rgba(0, 0, 0, 0.5);
+	animation: borderGlow 2s infinite alternate-reverse;
+}
+
+@keyframes borderGlow {
+	0% {
+		box-shadow: 0 0 5px rgba(246, 44, 44, 0.8);
+	}
+	100% {
+		box-shadow: 0 0 30px rgba(246, 44, 44, 0.8);
+	}
 }
 
 .container img {
-	padding: 10px;
-	width: 200px;
-	height: 200px;
+	padding: 20px;
+	width: 230px;
+	height: 230px;
 	border: 2px solid #000;
-	border-radius: 5px;
+	border-radius: 15px;
 	transition: all 0.5s ease;
+	background: linear-gradient(45deg, #ffcc00, #ff6699, #33ccff, #ffcc00);
+	background-size: 400%;
+	animation: gradientMove 4s infinite alternate;
+}
+
+@keyframes gradientMove {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 100%;
+	}
 }
 
 .container h1 {
@@ -68,5 +113,18 @@
 }
 
 .container:hover img {
-	transform: rotateY(360deg);
+	transform: translateY(-2px);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	border: 2px solid rgba(255, 255, 255, 0.8);
+	animation: pendulum 0.8s infinite alternate,
+		gradientMove 4s infinite alternate;
+}
+
+@keyframes pendulum {
+	0% {
+		transform: translateY(-2px);
+	}
+	100% {
+		transform: translateY(14px);
+	}
 }

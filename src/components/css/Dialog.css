@@ -14,6 +14,20 @@
 	z-index: 2;
 	border-radius: 10px;
 	background-image: linear-gradient(to bottom, red 50%, #fff 50%);
+	box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+	animation: pulsate 1.8s infinite;
+}
+
+@keyframes pulsate {
+	0% {
+		box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+	}
+	50% {
+		box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+	}
+	100% {
+		box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+	}
 }
 
 .overlay {
@@ -38,6 +52,7 @@
 .details img {
 	height: 300px;
 	transition: all 0.5s ease;
+	animation: imgHover 1.8s infinite ease-in-out;
 }
 
 .poke-details {
@@ -45,11 +60,20 @@
 	flex-direction: column;
 	gap: 10px;
 	width: 430px;
-	height: 500px;
+	max-height: 500px;
 	background-color: black;
 	padding: 30px;
 	border-radius: 10px;
 	overflow: auto;
+}
+
+.poke-details::-webkit-scrollbar {
+	width: 10px;
+}
+
+.poke-details::-webkit-scrollbar-thumb {
+	background-color: #15ff00;
+	border-radius: 5px;
 }
 
 .poke-details h1 {
@@ -90,8 +114,16 @@
 	transition: all 0.5s ease;
 }
 
-.details img:hover {
-	transform: scale(1.1);
+@keyframes imgHover {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
+	}
 }
 
 .popup button:hover {

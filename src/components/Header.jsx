@@ -43,6 +43,7 @@ const Header = props => {
 					<input
 						type="text"
 						value={search}
+						placeholder="Search for a pokemon"
 						onChange={e => {
 							setSearch(e.target.value);
 						}}
