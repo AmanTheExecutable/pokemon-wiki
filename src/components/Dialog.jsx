@@ -15,10 +15,10 @@ const Dialog = ({ pokemonDetails, onClose, imgUrl }) => {
 						</h1>
 
 						<h1>
-							<span>Height:</span> {pD?.height}
+							<span>Height:</span> {pD?.height} units
 						</h1>
 						<h1>
-							<span>Weight:</span> {pD?.weight}
+							<span>Weight:</span> {pD?.weight} units
 						</h1>
 						<h1>
 							<span>Base Experience:</span> {pD?.base_experience}
