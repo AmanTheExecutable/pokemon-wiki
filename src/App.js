@@ -7,7 +7,7 @@ import Header from "./components/Header";
 
 const App = () => {
 	const [pokemonData, setPokemonData] = useState({});
-
+	const [favourites, setFavourites] = useState([]);
 	useEffect(() => {
 		const fetchData = async () => {
 			const response = await apiFetch();
@@ -24,7 +24,13 @@ const App = () => {
 			<div className="main-container">
 				{pokemonData?.results?.map(pokemon => {
 					return (
-						<Cards key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+						<Cards
+							key={pokemon.name}
+							name={pokemon.name}
+							url={pokemon.url}
+							favourites={favourites}
+							setFavourites={setFavourites}
+						/>
 					);
 				})}
 			</div>

@@ -5,7 +5,7 @@ import Dialog from "./Dialog";
 import Blank from "./assets/Blank.png";
 import Filled from "./assets/Filled.png";
 
-const Cards = ({ name, url }) => {
+const Cards = ({ name, url, favourites, setFavourites }) => {
 	const [img, setImg] = React.useState("");
 	const [isDialogOpen, setDialogOpen] = React.useState(false);
 	const [pokemonDetails, setPokemonDetails] = React.useState({});
@@ -29,9 +29,18 @@ const Cards = ({ name, url }) => {
 	};
 
 	const toggleFavourite = () => {
+		if (isFavourite) {
+			setFavourites(favourites.filter(fav => fav !== url));
+		} else {
+			setFavourites([...favourites, url]);
+		}
 		setIsFavourite(!isFavourite);
 	};
+
 	React.useEffect(() => {
+		if (favourites.includes(url)) {
+			setIsFavourite(true);
+		}
 		fetchImg(url);
 	}, [url]);
 
