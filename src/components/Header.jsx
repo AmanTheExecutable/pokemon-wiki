@@ -2,6 +2,8 @@ import React from "react";
 import { apiFetch2 } from "./apiFetch";
 import "./css/Header.css";
 import Dialog from "./Dialog";
+import Logo from "./assets/Logo.png";
+import Ball from "./assets/Ball.png";
 
 const Header = props => {
 	const [search, setSearch] = React.useState("");
@@ -38,12 +40,16 @@ const Header = props => {
 	return (
 		<>
 			<div className="header">
-				<h1>Pokemon Wiki</h1>
+				<div className="logo-container">
+					<img src={Logo} alt="Logo" id="first" />
+					<img src={Ball} alt="Ball" id="second" />
+				</div>
+
 				<div className="search">
 					<input
 						type="text"
 						value={search}
-						placeholder="Search for a pokemon"
+						placeholder="Search for Pokemon!"
 						onChange={e => {
 							setSearch(e.target.value);
 						}}

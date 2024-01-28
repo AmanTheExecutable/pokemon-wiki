@@ -19,9 +19,18 @@
 	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
 }
 
-.header h1 {
-	font-size: 3rem;
-	font-weight: 700;
+.header .logo-container {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.header .logo-container #first {
+	width: 230px;
+}
+
+.header .logo-container #second {
+	width: 70px;
 }
 
 .header .btns {
